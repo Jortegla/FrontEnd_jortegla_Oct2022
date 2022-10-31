@@ -1,0 +1,60 @@
+
+.body{
+  background-color: #e1cfc6;
+  text-align: center;
+  margin: 2rem;
+  border-radius: 10px;
+  box-shadow: -5px 5px 5px #8f6062;
+}
+
+.body:hover{
+  transform: scale(1.05);
+}
+
+.botones{
+  position: relative;
+  margin-left: 60%;
+
+}
+
+.img{
+  padding: 3px;
+}
+
+button{
+  margin: 1px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.titulo{
+  display: flex;
+  position: relative;
+  text-align: center;
+  justify-content: space-between;
+  margin-right: 55%;
+  margin-left: 10%;
+  margin-top: 10%;
+  color: white;
+  text-shadow: -5px 5px 5px #8f6062;
+}
+
+.container{
+  border-bottom: double;
+  color: #fff;
+
+}
+
+#exampleModalLabel{
+  color: black;
+}
+
+h3{
+  font-size: 1rem;
+  color: black;
+}
+
+p{
+  font-size: 0.8rem;
+  color: rgb(16, 116, 165);
+}

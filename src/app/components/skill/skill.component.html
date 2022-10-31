@@ -1,0 +1,234 @@
+<div class="container">
+  <div class="titulo">
+    <h2>Habilidades</h2>
+    <!-- BOTON MODAL AGREGAR HABILIDADES-->
+    <button
+    *ngIf="login.getUserRole() == 'ADMIN'"
+      type="button"
+      class="btn btn-success"
+      data-bs-toggle="modal"
+      data-bs-target="#addSkillModal"
+    >
+      Agregar Habilidad
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-3 col-ms-3 col-lg-3" *ngFor="let Skill of skills">
+    <!--BOTON MODAL EDITAR HABILIDAD-->
+    <div class="botones">
+      <button
+      *ngIf="login.getUserRole() == 'ADMIN'"
+        value="{{ Skill.idSk }}"
+        (click)="getSkillById(Skill.idSk)"
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#editSkillModal"
+      >
+        <i class="fa fa-pencil"></i>
+      </button>
+
+      <!--BOTON ELIMINAR HABILIDAD-->
+      <button
+      *ngIf="login.getUserRole() == 'ADMIN'"
+        value="{{ Skill.idSk }}"
+        (click)="onDeletSkill(Skill.idSk)"
+        type="button"
+        class="btn btn-danger"
+      >
+        <i class="fa fa-close"></i>
+      </button>
+    </div>
+    <circle-progress
+      [percent]="Skill.porcentajeSk"
+      [radius]="100"
+      [outerStrokeWidth]="16"
+      [innerStrokeWidth]="8"
+      [outerStrokeColor]="'#78C000'"
+      [innerStrokeColor]="'#C7E596'"
+      [animation]="true"
+      [animationDuration]="300"
+      [showImage]="true"
+      imageSrc="{{ Skill.imagenSk }}"
+      [imageHeight]="60"
+      [imageWidth]="80"
+      [backgroundOpacity]="1"
+      backgroundColor="transparent"
+      backgroundStroke="transparent"
+    ></circle-progress>
+    <h4>{{ Skill.nombreSk }}</h4>
+  </div>
+</div>
+
+<!-- MODAL CREAR HABILIDAD-->
+<div
+  class="modal fade"
+  id="addSkillModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="false"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Habilidad</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <form #addForm="ngForm" (ngSubmit)="onAddSkill()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nombreSk">Nombre</label>
+            <input
+              [(ngModel)]="nombreSk"
+              type="text"
+              ngModel
+              name="nombreSk"
+              class="form-control"
+              id="nombreSk"
+              placeholder="Nombre"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="imagenSk">Imagen</label>
+            <input
+              [(ngModel)]="imagenSk"
+              type="text"
+              ngModel
+              name="imagenSk"
+              class="form-control"
+              id="imagenSk"
+              placeholder="Nombre"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="porcentajeSk">Porcentaje</label>
+            <input
+              [(ngModel)]="porcentajeSk"
+              type="number"
+              ngModel
+              name="porcentajeSk"
+              class="form-control"
+              id="porcentajeSk"
+              placeholder="Porcentaje"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button id="agregarSkill" type="submit" class="btn btn-primary">
+            Agregar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDITAR HABILIDAD-->
+<div
+  class="modal fade"
+  id="editSkillModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Habilidad</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form #addForm="ngForm" (ngSubmit)="onEditSkill()">
+        <div class="modal-body">
+          <input
+            [(ngModel)]="idSk"
+            type="hidden"
+            ngModel
+            name="idSk"
+            class="form-control"
+            id="idSk"
+          />
+
+          <div class="form-group">
+            <label for="nombreSk">Nombre</label>
+            <input
+              [(ngModel)]="editNombreSk"
+              type="text"
+              ngModel
+              name="editNombreSk"
+              class="form-control"
+              id="editNombreSk"
+              placeholder="Editar Habilidad"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="imagenSk">Imagen</label>
+            <input
+              [(ngModel)]="editImagenSk"
+              type="text"
+              ngModel
+              name="editImagenSk"
+              class="form-control"
+              id="editImagenSk"
+              placeholder="Nombre"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="porcentajeSk">Porcentaje</label>
+            <input
+              [(ngModel)]="editPorcentajeSk"
+              type="number"
+              ngModel
+              name="editPorcentajeSk"
+              class="form-control"
+              id="editPorcentajeSk"
+              placeholder="Porcentaje"
+              required
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button id="editarSkill" type="submit" class="btn btn-primary">
+            Editar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

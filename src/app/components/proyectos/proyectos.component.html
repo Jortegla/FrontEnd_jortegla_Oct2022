@@ -1,0 +1,261 @@
+<div class="container">
+  <div class="titulo">
+    <h2>Proyectos</h2>
+    <!-- BOTON MODAL AGREGAR PROYECTOS-->
+    <div class="boton-add">
+      <button
+      *ngIf="login.getUserRole() == 'ADMIN'"
+        type="button"
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#addProyectosModal"
+      >
+        Agregar Proyecto
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="info" *ngFor="let Proyecto of proyectos">
+    <div class="img">
+      <img
+        [src]="Proyecto.fotoProy"
+        class="card-img-top"
+        width="200"
+        height="200"
+        alt="..."
+      />
+    </div>
+
+    <div class="desc">
+      <h3>{{ Proyecto.nombreProy }}</h3>
+      <p>{{ Proyecto.fechaProy }}</p>
+      <p>{{ Proyecto.descripcionProy }}</p>
+    </div>
+    <div class="botones">
+      <!--BOTON MODAL EDITAR PROYECTOS-->
+      <button
+      *ngIf="login.getUserRole() == 'ADMIN'"
+        value="{{ Proyecto.idProy }}"
+        (click)="getProyectosById(Proyecto.idProy)"
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#editProyectosModal"
+      >
+        <i class="fa fa-pencil"></i>
+      </button>
+
+      <!--BOTON ELIMINAR PROYECTO-->
+      <button
+      *ngIf="login.getUserRole() == 'ADMIN'"
+        value="{{ Proyecto.idProy }}"
+        (click)="onDeletProyectos(Proyecto.idProy)"
+        type="button"
+        class="btn btn-danger"
+      >
+        <i class="fa fa-close"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CREAR PROYECTO-->
+<div
+  class="modal fade"
+  id="addProyectosModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="false"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Proyecto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <form #addForm="ngForm" (ngSubmit)="onAddProyectos()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nombreProy">Nombre</label>
+            <input
+              [(ngModel)]="nombreProy"
+              type="text"
+              ngModel
+              name="nombreProy"
+              class="form-control"
+              id="nombreProy"
+              placeholder="Nombre"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="fechaProy">Fecha</label>
+            <input
+              [(ngModel)]="fechaProy"
+              type="number"
+              ngModel
+              name="fechaProy"
+              class="form-control"
+              id="fechaProy"
+              placeholder="Fecha"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="descripcionProy">Descripcion</label>
+            <input
+              [(ngModel)]="descripcionProy"
+              type="text"
+              ngModel
+              name="descripcionProy"
+              class="form-control"
+              id="descripcionProy"
+              placeholder="Descripcion"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="fotoProy">Foto del Proyecto</label>
+            <input
+              [(ngModel)]="fotoProy"
+              type="text"
+              ngModel
+              name="fotoProy"
+              class="form-control"
+              id="fotoProy"
+              placeholder="Foto del Proyecto"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button id="agregarProyecto" type="submit" class="btn btn-primary">
+            Agregar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDITAR PROYECTO-->
+<div
+  class="modal fade"
+  id="editProyectosModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Proyecto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form #addForm="ngForm" (ngSubmit)="onEditProyectos()">
+        <div class="modal-body">
+          <input
+            [(ngModel)]="idProy"
+            type="hidden"
+            ngModel
+            name="idProy"
+            class="form-control"
+            id="idProy"
+          />
+
+          <div class="form-group">
+            <label for="nombreProy">Nombre</label>
+            <input
+              [(ngModel)]="editNombreProy"
+              type="text"
+              ngModel
+              name="editNombreProy"
+              class="form-control"
+              id="editNombreProy"
+              placeholder="Editar Nombre"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="fechaProy">Fecha</label>
+            <input
+              [(ngModel)]="editFechaProy"
+              type="number"
+              ngModel
+              name="editFechaProy"
+              class="form-control"
+              id="editFechaProy"
+              placeholder="Fecha"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="descripcionProy">Descripcion del Proyecto</label>
+            <input
+              [(ngModel)]="editDescripcionProy"
+              type="number"
+              ngModel
+              name="editDescripcionProy"
+              class="form-control"
+              id="editDescripcionProy"
+              placeholder="Descripcion del Proyecto"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="fotoProy">Foto del Proyecto</label>
+            <input
+              [(ngModel)]="editFotoProy"
+              type="text"
+              ngModel
+              name="editFotoProy"
+              class="form-control"
+              id="editFotoProy"
+              placeholder="Foto del Proyecto"
+              required
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button id="editarProyectos" type="submit" class="btn btn-primary">
+            Editar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

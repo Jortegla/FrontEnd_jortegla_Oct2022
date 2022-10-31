@@ -1,0 +1,104 @@
+
+
+.fondo{
+  background-color: #cd776e;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.info{
+
+  display: table-column;
+  justify-content: center;
+  position: relative;
+  margin: 2rem;
+  width: 50%;
+}
+
+h1, h5{
+text-align: center;
+}
+
+h1{
+  font-size: 3rem;
+}
+
+h5{
+  font-size: 1.5rem;
+  color: rgb(16, 116, 165);
+}
+
+h2{
+  font-size: 2rem;
+}
+
+.desc{
+  background-color: #e1cfc6;
+  display: flex;
+  position: relative;
+  margin-right: 5rem;
+  width: 50%;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: -5px 5px 5px #8f6062;
+  text-align: center;
+  padding: 3rem;
+}
+
+.desc:hover{
+  transform: scale(1.05);
+}
+
+.boton{
+  position: absolute;
+  top: 12%;
+  left: 92%;
+
+}
+
+
+
+
+/*Nombre */
+#nombre{
+    font-weight: bold;
+    margin-top: 5%;
+   }
+
+   .img{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+
+   }
+
+   .img:hover{
+    transform: scale(1.05);
+   }
+
+    @media(min-width: 576px){
+        #fotoperfil{
+            position: relative;
+            display: flex;
+            width: 45%;
+            border-radius: 50%;
+            justify-content: center;
+
+
+
+          }
+    }
+
+    @media(max-width: 575px){
+        #fotoperfil{
+            position: relative;
+            width: 70%;
+            left: 10%;
+            top: 48%;
+            display: flex;
+            border-radius: 50%;
+        }
+    }

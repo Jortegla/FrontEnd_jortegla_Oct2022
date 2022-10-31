@@ -1,0 +1,151 @@
+<div class="fondo" *ngFor="let persona of personas">
+  <div class="info">
+    <div class="img">
+      <img
+        [src]="persona.foto"
+        class="img-fluid img-thumbnail"
+        id="fotoperfil"
+        alt="fotoPerfil"
+      />
+    </div>
+    <h1 id="nombre">{{ persona.nombre }} {{ persona.apellido }}</h1>
+    <h5>{{ persona.titulo }}</h5>
+  </div>
+  <div class="desc">
+    <span>
+      <h2>Acerca de mí</h2>
+      <p>{{ persona.descripcion }}</p>
+    </span>
+  </div>
+  <div class="boton" >
+    <!--BOTON MODAL EDITAR PERSONA-->
+    <button
+      value="{{ persona.id }}"
+      (click)="getPersonaById(persona.id)"
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#editPersonaModal"
+      *ngIf="login.getUserRole() == 'ADMIN'"
+    >
+      <i class="fa fa-pencil"></i>
+    </button>
+  </div>
+</div>
+
+<!-- MODAL EDITAR PERSONA-->
+<div
+  class="modal fade"
+  id="editPersonaModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Persona</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <form #addForm="ngForm" (ngSubmit)="onEditPersona()">
+        <div class="modal-body">
+          <input
+            [(ngModel)]="id"
+            type="hidden"
+            ngModel
+            name="id"
+            class="form-control"
+            id="id"
+          />
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              [(ngModel)]="editNombre"
+              type="text"
+              ngModel
+              name="editNombre"
+              class="form-control"
+              id="editNombre"
+              placeholder="Editar Nombre"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+              [(ngModel)]="editApellido"
+              type="text"
+              ngModel
+              name="editApellido"
+              class="form-control"
+              id="editApellido"
+              placeholder="Apellido"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="titulo">Título</label>
+            <input
+              [(ngModel)]="editTitulo"
+              type="text"
+              ngModel
+              name="editTitulo"
+              class="form-control"
+              id="editTitulo"
+              placeholder="Titulo"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="foto">Foto</label>
+            <input
+              [(ngModel)]="editFoto"
+              type="text"
+              accept=".jpg,.png"
+              name="editFoto"
+              class="form-control file-input"
+              id="editFoto"
+              placeholder="Foto de Perfil"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <input
+              [(ngModel)]="editDescripcion"
+              type="text"
+              ngModel
+              name="editDescripcion"
+              class="form-control"
+              id="editDescripcion"
+              placeholder="Descripcion"
+              required
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button id="editarPersona" type="submit" class="btn btn-primary">
+            Editar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

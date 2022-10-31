@@ -1,0 +1,44 @@
+
+.titulo{
+  display: flex;
+  position: relative;
+  text-align: center;
+  justify-content: space-between;
+  margin-right: 55%;
+  margin-left: 10%;
+  margin-top: 5%;
+  color: white;
+  text-shadow: -5px 5px 5px #8f6062;
+
+}
+
+.container{
+  border-bottom: double;
+  color: #fff;
+}
+
+circle-progress{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  }
+
+
+.botones{
+  display: flex;
+  justify-content:  right;
+  position: relative;
+  margin-top: 3%;
+  margin-right: 3%;
+
+}
+
+
+button{
+ margin: 1%;
+}
+h4{
+  display: flex;
+  justify-content: center;
+  position: relative;
+}

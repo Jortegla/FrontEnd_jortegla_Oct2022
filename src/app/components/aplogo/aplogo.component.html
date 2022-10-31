@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="container">
+    <div class="logo">
+      <a href="https://www.argentina.gob.ar/economia/conocimiento/argentina-programa"><img src="../../../assets/APLogo.png" id="logoAP" /></a>
+    </div>
+    <div class="redes_sociales">
+      <a href="https://ar.linkedin.com/"><img src="../../../assets/linkedin.png" alt="linkedin" /></a>
+
+      <a href="https://github.com/Jortegla?tab=repositories"><img src="../../../assets/github.png" alt="github" /></a>
+
+      <button type="button" class="btn btn-outline-light" [routerLink]="'/login'" *ngIf="!loginService.isLoggedIn()">
+        Ingresar
+      </button>
+
+       <button type="button" class="btn btn-outline-light" (click)="logout()" *ngIf="loginService.isLoggedIn()">
+        Cerrar Sesion
+      </button>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+#imagenPerfil{
+  height: 200px;
+  width: 200px;
+  position: relative;
+  display: flex;
+}
+
+.d-flex{
+  justify-content: center;
+  align-items: center;
+}
+
+section{
+  display: block;
+}
