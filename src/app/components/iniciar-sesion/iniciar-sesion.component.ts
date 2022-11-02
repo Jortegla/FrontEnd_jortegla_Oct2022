@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
 import { IniciarSesionService } from 'src/app/service/iniciar-sesion.service';
-import { Token } from '@angular/compiler';
 
 
 @Component({
@@ -13,9 +12,12 @@ import { Token } from '@angular/compiler';
 })
 export class IniciarSesionComponent implements OnInit {
 
+
+
+
   loginData = {
-    "username": '',
-    "password": '',
+    "username": "",
+    "password": "",
   };
 
   form: FormGroup;
@@ -29,6 +31,8 @@ export class IniciarSesionComponent implements OnInit {
       }
     )
    }
+
+   
 
   ngOnInit(): void {
   }

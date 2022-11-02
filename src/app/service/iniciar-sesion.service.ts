@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,9 +8,22 @@ import { environment } from 'src/environments/environment';
 })
 export class IniciarSesionService {
 
+
+
   private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com';
   public loginStatusSubjec = new Subject<boolean>();
   constructor(private http:HttpClient) { }
+
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    }),
+    responseType: 'text' as 'json',
+  };
+
+
 
   //Generando Token
   public  generateToken(loginData: any){
@@ -22,7 +35,7 @@ export class IniciarSesionService {
     localStorage.setItem('token', token);
 }
 
-public isLoggedIn(){
+public isLoggedIn(): boolean{
   let tokenStr = localStorage.getItem('token');
 
   if(tokenStr == undefined || tokenStr == '' || tokenStr == null) {
