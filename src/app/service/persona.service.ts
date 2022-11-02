@@ -8,7 +8,7 @@ import { Persona } from '../interfaz/IPersona';
   providedIn: 'root',
 })
 export class PersonaService {
-  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com/';
+  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { Skill } from '../interfaz/ISkill';
   providedIn: 'root',
 })
 export class SkillService {
-  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com/';
+  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 

@@ -8,7 +8,8 @@ import { educacion } from '../interfaz/IEducacion';
   providedIn: 'root',
 })
 export class EducacionService {
-  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com/';
+  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com';
+
 
   constructor(private http: HttpClient) {}
 

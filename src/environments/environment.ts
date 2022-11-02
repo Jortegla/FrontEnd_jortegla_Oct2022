@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL: 'https://bkd-portfolio-ap.herokuapp.com/'
+  URL: 'https://portfolio-jortegla.herokuapp.com'
 };
 
 /*

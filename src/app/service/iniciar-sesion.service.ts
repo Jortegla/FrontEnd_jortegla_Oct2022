@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -7,8 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class IniciarSesionService {
 
-  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com/';
-
+  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com';
+  public loginStatusSubjec = new Subject<boolean>();
   constructor(private http:HttpClient) { }
 
   //Generando Token

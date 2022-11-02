@@ -9,7 +9,7 @@ import { Usuario } from '../interfaz/IUsuario';
 })
 export class UsuarioService {
 
-  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com/'+`/usuarios`;
+  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 
@@ -23,17 +23,17 @@ export class UsuarioService {
 
   public addUsuario(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(
-      `${this.apiServerUrl}/`,
+      `${this.apiServerUrl}/usuarios/`,
       usuario
     );
   }
 
   public getUsuario(username: String): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiServerUrl}/${username}`);
+    return this.http.get<Usuario>(`${this.apiServerUrl}/usuarios/${username}`);
   }
 
   public deleteUsuario(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/usuarios/${id}`);
   }
 
 

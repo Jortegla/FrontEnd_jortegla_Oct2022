@@ -8,7 +8,7 @@ import { Proyectos } from '../interfaz/IProyectos';
   providedIn: 'root',
 })
 export class ProyectosService {
-  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com/';
+  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 

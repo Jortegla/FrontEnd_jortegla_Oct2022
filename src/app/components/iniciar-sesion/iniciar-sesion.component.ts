@@ -22,7 +22,7 @@ export class IniciarSesionComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private loginService: IniciarSesionService) {
-                
+
     this.form = this.formBuilder.group(
       {
 
@@ -59,9 +59,11 @@ export class IniciarSesionComponent implements OnInit {
 
             if(this.loginService.getUserRole() == "ADMIN"){
               window.location.href = 'portfolio';
+              this.loginService.loginStatusSubjec.next(true);
             }
             else if (this.loginService.getUserRole() == 'INVITADO'){
               window.location.href = 'portfolio';
+              this.loginService.loginStatusSubjec.next(true);
             }
             else {
               this.loginService.logout();

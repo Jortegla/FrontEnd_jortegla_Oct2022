@@ -8,7 +8,7 @@ import { Experiencia } from '../interfaz/IExperiencia';
   providedIn: 'root',
 })
 export class ExperienciaService {
-  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com/';
+  private apiServerUrl = 'https://portfolio-jortegla.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 
